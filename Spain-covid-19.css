@@ -56,9 +56,10 @@ p {
   visibility: hidden;
   border: 0;
   width: 100%;
-  height: 100%;
+  height: 110%;
 }
 
+#m2,
 #m3,
 #m4 {
   height: 130%;
