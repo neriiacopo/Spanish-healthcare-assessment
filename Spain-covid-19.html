@@ -1,0 +1,181 @@
+<head>
+  <title>Spain Covid-19 risk</title>
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous"
+  />
+
+  <link rel="stylesheet" href="Spain-covid-19.css" />
+</head>
+
+<body>
+  <div class="loader v-align"></div>
+  <iframe
+    onload="document.getElementById('m1').classList.add('selected');"
+    id="m1"
+    class="abs-top-left map"
+    src="http://rstudio-pubs-static.s3.amazonaws.com/593954_44c088afae2e44d4af15648b9affdf80.html"
+    title=""
+  ></iframe>
+
+  <iframe
+    id="m2"
+    class="abs-top-left map"
+    src="http://rstudio-pubs-static.s3.amazonaws.com/595575_fafb5ba461324866a8e239621df6b48e.html"
+    title=""
+  ></iframe>
+
+  <iframe
+    id="m3"
+    class="abs-top-left map"
+    src="http://rstudio-pubs-static.s3.amazonaws.com/595601_b0d97399ec9a424da78140490eebccab.html#"
+    title=""
+  ></iframe>
+
+  <iframe
+    id="m4"
+    class="abs-top-left map"
+    src="http://rstudio-pubs-static.s3.amazonaws.com/595606_ef39a543d2ee44049280d698ec9ebf48.html"
+    title=""
+  ></iframe>
+
+  <div class="abs-btm-right">
+    <a
+      href="https://iaac.net/research-departments/advanced-architecture-group/"
+      target="_blank"
+    >
+      <img
+        src="https://i.ibb.co/qnFVm7T/AAG-IAAC-logoblanco1-1.png"
+        alt="IAAC-Advanced Architecture Group"
+        width="200"
+      />
+    </a>
+  </div>
+
+  <div class="menu-container abs-btm-left on-top">
+    <div
+      id="t1"
+      class="menu-message border-0 rounded bg-light fix-btm shadow-lg visible"
+    >
+      <h2>Healthcare assessment</h2>
+      <p>
+        Based on the road infrastructure, and the terrain morphology, the study
+        carries a cumulative cost analysis in order to visualize the degree of
+        accessibility of each spanish hospital. By drawing the hospital
+        catchment areas, the report highlights the geolocalized unbalances of
+        the national healthcare system where the great elderly population is
+        disconnected to the health facilities.
+      </p>
+    </div>
+
+    <div
+      id="t2"
+      class="menu-message border-0 rounded bg-light fix-btm shadow-lg"
+    >
+      <h2>Accessibility to hospitals and absolute capacity</h2>
+      <p>
+        The map reports the location of the Spanish healthcare nodes with their hosting capacity and reachability on the territory. 
+        Starting from the hospitals and based on the road infrastructure plus the terrain morphology, a cumulative cost analysis is conducted in order to visualize their degree of accessibility. 
+        This map highlights the geolocalized unbalances of the national healthcare system and functions as a base to draw the hospital catchment areas.
+      </p>
+    </div>
+
+    <div
+      id="t3"
+      class="menu-message border-0 rounded bg-light fix-btm shadow-lg"
+    >
+      <h2>Relative availability of beds and Intensive care units</h2>
+      <p>
+        The map reports the location of the Spanish healthcare nodes with their relative availability of beds and ICU in relation to the number of citizens they serve by proximity. The radius of the circles is representative of the number of beds in the hospital per 1000persons while the color shows the availability of Intensive care units. The latter is mapped from regional data and it is indicatory.
+      </p>
+    </div>
+
+    <div
+      id="t4"
+      class="menu-message border-0 rounded bg-light fix-btm shadow-lg"
+    >
+      <h2>Covid cases and Demographic data</h2>
+      <p>
+        The map reports the number of Covid-19 cases per region. Moreover, a dot map highlights the settlements at a higher risk in consideration to the total population and the median age. These features are represented respectively as the radius of the dots and their brightness. 
+      </p>
+    </div>
+
+    
+
+    <ul class="menu-btn-v fix-btm super-top">
+      <li class="btn-v">
+        <button
+          id="b1"
+          class="border rounded shadow-sm  bg-light b btn-selected"
+          onclick="toggleStatus('1')">
+          <img src="ico/icon-08.png" width="100%" height="100%"></img>
+        </button>
+      </li>
+      <li class="btn-v">
+        <button
+          id="b2"
+          class="border rounded shadow-sm bg-light b"
+          onclick="toggleStatus('2')"
+        >
+        <img src="ico/icon-05.png" width="100%" height="100%"></img>
+        </button>
+      </li>
+      <li class="btn-v">
+        <button
+          id="b3"
+          class="border rounded bg-light shadow-sm b"
+          onclick="toggleStatus('3')"
+        >
+        <img src="ico/icon-06.png" width="100%" height="100%"></img>
+        </button>
+      </li>
+      <li class="btn-v">
+        <button
+          id="b4"
+          class="border rounded bg-light shadow-sm b"
+          onclick="toggleStatus('4')"
+        >
+        <img src="ico/icon-07.png" width="100%" height="100%"></img>
+        </button>
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    function toggleStatus(e) {
+
+      mapId = e;
+
+      // Update Maps properties
+      map_all = document.getElementsByClassName("map");     
+
+      for (let i = 0; i < map_all.length; i++) {
+        map_all[i].classList.remove("selected");
+      }
+      map_sel = document.getElementById(String("m" + e));
+      console.log(map_sel);
+      map_sel.classList.add("selected");
+
+      // Update Text properties
+      text_all = document.getElementsByClassName("menu-message")
+      for (let i = 0; i < text_all.length; i++) {
+        text_all[i].classList.remove("visible");
+      }
+      text_sel = document.getElementById(String("t" + e))
+      text_sel.classList.add("visible")
+
+      
+      // Update Button properties
+      btn_all = document.getElementsByClassName("b")
+      for (let i = 0; i < text_all.length; i++) {
+        btn_all[i].classList.remove("btn-selected");
+      }
+      btn_sel = document.getElementById(String("b" + e))
+      btn_sel.classList.add("btn-selected")
+
+
+    }
+  </script>
+</body>
