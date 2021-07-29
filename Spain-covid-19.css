@@ -169,6 +169,8 @@ button.btn-selected:hover {
   background-color: #cfcfcf !important;
 }
 
+/* For mobiles only */
+/*
 #mobile-block {
   position: absolute;
   top: 0;
@@ -192,9 +194,9 @@ button.btn-selected:hover {
   padding: 50px;
 }
 
-/* For mobiles only */
 @media screen and (max-width: 600px) {
   #mobile-block {
     display: table;
   }
 }
+*/
