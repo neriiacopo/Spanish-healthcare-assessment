@@ -168,3 +168,33 @@ button {
 button.btn-selected:hover {
   background-color: #cfcfcf !important;
 }
+
+#mobile-block {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 1000000000;
+  display: none;
+  text-align: center;
+  vertical-align: middle;
+}
+
+#mobile-block h4 {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  padding: 50px;
+}
+
+/* For mobiles only */
+@media screen and (max-width: 600px) {
+  #mobile-block {
+    display: table;
+  }
+}
